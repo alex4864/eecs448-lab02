@@ -69,6 +69,12 @@ class LinkedList
 	*/
 	void addFront(T value);
 
+	/** @pre the value is a valid T.
+	*   @post none
+	*   @return pointer to the indicated node
+	*/
+	Node<T>* getNode(int index) const;
+
 	/** @pre None
 	*   @post One element is removed from the back of the list.
 	*   @return intrue if the back element was removed, false if the list is empty.

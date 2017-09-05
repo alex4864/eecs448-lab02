@@ -126,17 +126,33 @@ void LinkedList<T>::addFront(T value)
 }
 
 template <typename T>
+Node<T>* LinkedList<T>::getNode(int index) const // helper function
+{
+  Node<T>* hopper = m_front;
+
+  for(int i = 1; i < index; i++)
+  {
+    hopper = hopper->getNext();
+  }
+
+  return hopper;
+}
+
+template <typename T>
 bool LinkedList<T>::removeBack()
 {
-	Node<T>* lastNode = nullptr;
-	Node<T>* secondintoLast = nullptr;
-	bool isRemoved = false;
+	if(m_size == 0)
+  {
+    return false;
+  }
 
-	/** TODO
-		Fix this method
-	*/
+  Node<T>* last = getNode(m_size);
+  Node<T>* secondLast = getNode(m_size - 1);
 
-	return(isRemoved);
+  secondLast->setNext(nullptr);
+  delete last;
+  m_size--;
+  return true;
 }
 
 template <typename T>
