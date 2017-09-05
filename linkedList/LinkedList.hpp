@@ -44,21 +44,37 @@ int LinkedList<T>::size() const
 }
 
 template <typename T>
+int LinkedList<T>::positionOf(T value) const
+{
+  if(m_size == 0)
+  {
+    return 0;
+  }
+
+  Node<T>* hopper = m_front;
+
+  if(hopper->getValue() == value)
+  {
+    return 1;
+  }
+
+  for(int i = 1; i < m_size; i++)
+  {
+    hopper = hopper->getNext();
+
+    if(hopper->getValue() == value)
+    {
+      return(i + 1);
+    }
+  }
+
+  return 0;
+}
+
+template <typename T>
 bool LinkedList<T>::search(T value) const
 {
-	/*if(!m_front)
-	{
-		return false;
-	}
-	Node<T>* jumper = m_front;
-
-	while(jumper)
-	{
-
-	}
-
-	return(isFound);*/
-	return false;
+	return(positionOf(value) > 0);
 }
 
 template <typename T>
